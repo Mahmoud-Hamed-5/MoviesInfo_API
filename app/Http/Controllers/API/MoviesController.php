@@ -39,7 +39,6 @@ class MoviesController extends BaseController
             $poster = $request->poster;
             $newPoster = time() . $poster->getClientOriginalName();
             $poster->move('uploads/Movies-Posters', $newPoster);
-            //$post->photo = 'uploads/posts/'.$newPhoto;
         }
 
         $photoStore = $newPoster;
@@ -52,7 +51,6 @@ class MoviesController extends BaseController
             'poster' => $photoStore,
         ]);
 
-        //$movie = Movie::create($input);
         return $this->sendResponse(new MovieResource($movie), 'Movie created successfully');
     }
 

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController as AuthController;
 use App\Http\Controllers\API\GenresController;
 use App\Http\Controllers\API\MoviesController;
+use App\Http\Controllers\API\PeopleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,16 @@ Route::middleware('auth:api')->group(function (){
     });
 
     Route::resource('movies', MoviesController::class);
+
+});
+
+Route::middleware('auth:api')->group(function (){
+
+    Route::controller(PeopleController::class)->group(function(){
+        Route::post('people/{id}', 'update')->name('update');
+    });
+
+    Route::resource('people', PeopleController::class);
 
 });
 

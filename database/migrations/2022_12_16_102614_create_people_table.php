@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('biography')->default('');
-            $table->dateTime('date_of_birth', $precision = 0);
+            $table->date('date_of_birth', $precision = 0);
             $table->string('picture')->default('');
             $table->timestamps();
         });
