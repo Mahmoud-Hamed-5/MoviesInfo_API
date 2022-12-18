@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController as AuthController;
+use App\Http\Controllers\API\GenresController;
 use App\Http\Controllers\API\MoviesController;
 
 /*
@@ -36,5 +37,11 @@ Route::middleware('auth:api')->group(function (){
     });
 
     Route::resource('movies', MoviesController::class);
+
+});
+
+Route::middleware('auth:api')->group(function (){
+
+    Route::resource('genres', GenresController::class);
 
 });
