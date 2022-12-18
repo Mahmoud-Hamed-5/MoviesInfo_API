@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('summary')->default('');
             $table->boolean('in_theaters');
-            $table->dateTime('release_date', $precision = 0);
+            $table->date('release_date', $precision = 0);
             $table->string('poster')->default('');
             $table->timestamps();
         });
