@@ -35,6 +35,8 @@ Route::middleware('auth:api')->group(function (){
 
     Route::controller(MoviesController::class)->group(function(){
         Route::post('movies/{id}', 'update')->name('update');
+        Route::post('movies/casts/{id}', 'updateMovieCast')->name('updateMovieCast');
+        Route::delete('movies/casts/{id}', 'deleteFromMovieCast')->name('deleteFromMovieCast');
     });
 
     Route::resource('movies', MoviesController::class);
@@ -56,3 +58,5 @@ Route::middleware('auth:api')->group(function (){
     Route::resource('genres', GenresController::class);
 
 });
+
+

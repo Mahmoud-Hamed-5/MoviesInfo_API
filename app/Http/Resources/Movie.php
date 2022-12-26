@@ -14,6 +14,29 @@ class Movie extends JsonResource
      */
     public function toArray($request)
     {
+        $cast = [];
+        $index = 0;
+        foreach ($this->people as $person) {
+
+
+
+            $cast[$index]['Name']  = $person->name;
+            $cast[$index]['Role']  = $person->pivot->role;
+            $cast[$index]['Order'] = $person->pivot->order;
+
+            $index++;
+        }
+
+        $genres = [];
+        $index = 0;
+        foreach ($this->genres as $genre) {
+
+
+            $genres[$index]  = $genre->name;
+
+            $index++;
+        }
+
         //return parent::toArray($request);
         return [
             'id'            => $this->id,
@@ -24,6 +47,8 @@ class Movie extends JsonResource
             'poster'        => $this->poster,
             'created_at'    => $this->created_at->format('d/m/Y H:i:s A'),
             'updated_at'    => $this->updated_at->format('d/m/Y H:i:s A'),
+            'Genres'        => $genres,
+            'Cast'          => $cast,
         ];
     }
 }

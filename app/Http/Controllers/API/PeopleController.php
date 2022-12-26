@@ -42,13 +42,13 @@ class PeopleController extends BaseController
             $picture->move('uploads/People-Pictures', $newpicture);
         }
 
-        $photoStore = $newpicture;
+        $photoStore = $newpicture == null ? '' : $newpicture;
 
         $person = Person::create([
             'name' => $request->name,
             'biography' => $request->has('biography') ? $request->biography : '',
             'date_of_birth' => $request->date_of_birth,
-            'picture' => $newpicture,
+            'picture' => $photoStore,
         ]);
 
 
